@@ -170,7 +170,7 @@ public final class ReviveCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showHelp(@NotNull CommandSender sender) {
-        String version = plugin.getDescription().getVersion();
+        String version = plugin.getPluginMeta().getVersion();
         lang.send(sender, "help-header");
         lang.send(sender, "help-title", Placeholder.unparsed("version", version));
         lang.send(sender, "help-reload");

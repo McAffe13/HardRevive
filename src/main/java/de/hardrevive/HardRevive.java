@@ -19,9 +19,9 @@ import de.hardrevive.services.ReviveService;
 import de.hardrevive.storage.DataStorage;
 import de.hardrevive.storage.YamlStorage;
 import de.hardrevive.updates.UpdateChecker;
-import de.hardrevive.libs.bstats.bukkit.Metrics;
-import de.hardrevive.libs.bstats.charts.SimplePie;
-import de.hardrevive.libs.bstats.charts.SingleLineChart;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
+import org.bstats.charts.SingleLineChart;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,17 +33,18 @@ import org.jetbrains.annotations.Nullable;
  */
 public final class HardRevive extends JavaPlugin {
 
-    private static final int BSTATS_ID = 25000; // Replace with actual bStats ID after registration
+    private static final int BSTATS_ID = 31753; // Replace with actual bStats ID after registration
 
-    private @NotNull ConfigManager configManager;
-    private @NotNull LanguageManager languageManager;
-    private @NotNull DataStorage dataStorage;
-    private @NotNull DeadPlayerManager deadPlayerManager;
-    private @NotNull BanManager banManager;
-    private @NotNull ReviveItemManager reviveItemManager;
-    private @NotNull RecipeManager recipeManager;
-    private @NotNull EffectManager effectManager;
-    private @NotNull ReviveService reviveService;
+    // Late-initialized in onEnable(); guaranteed non-null after that point
+    private ConfigManager configManager;
+    private LanguageManager languageManager;
+    private DataStorage dataStorage;
+    private DeadPlayerManager deadPlayerManager;
+    private BanManager banManager;
+    private ReviveItemManager reviveItemManager;
+    private RecipeManager recipeManager;
+    private EffectManager effectManager;
+    private ReviveService reviveService;
     private @Nullable UpdateChecker updateChecker;
 
     @Override
@@ -79,7 +80,7 @@ public final class HardRevive extends JavaPlugin {
             updateChecker.checkAsync();
         }
 
-        getLogger().info("HardRevive v" + getDescription().getVersion() + " enabled.");
+        getLogger().info("HardRevive v" + getPluginMeta().getVersion() + " enabled.");
     }
 
     @Override
@@ -143,21 +144,21 @@ public final class HardRevive extends JavaPlugin {
         getLogger().info(" | || |__ _ _ _ __| | _ \\___ __ _(_)_ ___  ");
         getLogger().info(" | __ / _` | '_/ _` |   / -_) V / \\ V / -_)");
         getLogger().info(" |_||_\\__,_|_| \\__,_|_|_\\___|\\_/|_|\\_/\\___|");
-        getLogger().info(" Version: " + getDescription().getVersion());
+        getLogger().info(" Version: " + getPluginMeta().getVersion());
     }
 
     // -------------------------------------------------------------------------
     // Public accessors
     // -------------------------------------------------------------------------
 
-    public @NotNull ConfigManager getConfigManager()         { return configManager; }
-    public @NotNull LanguageManager getLanguageManager()     { return languageManager; }
-    public @NotNull DataStorage getDataStorage()             { return dataStorage; }
-    public @NotNull DeadPlayerManager getDeadPlayerManager() { return deadPlayerManager; }
-    public @NotNull BanManager getBanManager()               { return banManager; }
-    public @NotNull ReviveItemManager getReviveItemManager() { return reviveItemManager; }
-    public @NotNull RecipeManager getRecipeManager()         { return recipeManager; }
-    public @NotNull EffectManager getEffectManager()         { return effectManager; }
-    public @NotNull ReviveService getReviveService()         { return reviveService; }
+    public @NotNull ConfigManager getConfigManager()         { return java.util.Objects.requireNonNull(configManager); }
+    public @NotNull LanguageManager getLanguageManager()     { return java.util.Objects.requireNonNull(languageManager); }
+    public @NotNull DataStorage getDataStorage()             { return java.util.Objects.requireNonNull(dataStorage); }
+    public @NotNull DeadPlayerManager getDeadPlayerManager() { return java.util.Objects.requireNonNull(deadPlayerManager); }
+    public @NotNull BanManager getBanManager()               { return java.util.Objects.requireNonNull(banManager); }
+    public @NotNull ReviveItemManager getReviveItemManager() { return java.util.Objects.requireNonNull(reviveItemManager); }
+    public @NotNull RecipeManager getRecipeManager()         { return java.util.Objects.requireNonNull(recipeManager); }
+    public @NotNull EffectManager getEffectManager()         { return java.util.Objects.requireNonNull(effectManager); }
+    public @NotNull ReviveService getReviveService()         { return java.util.Objects.requireNonNull(reviveService); }
     public @Nullable UpdateChecker getUpdateChecker()        { return updateChecker; }
 }

@@ -74,17 +74,13 @@ public final class PlayerDeathListener implements Listener {
     }
 
     private @NotNull String resolveCause(@NotNull PlayerDeathEvent event) {
-        if (event.getDeathMessage() != null) {
-            // Paper provides a Component death message; fall back to simple extraction
-            net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer serializer =
-                    net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText();
-            String raw = serializer.serialize(event.deathMessage() != null
-                    ? event.deathMessage() : net.kyori.adventure.text.Component.empty());
+        net.kyori.adventure.text.Component deathMsg = event.deathMessage();
+        if (deathMsg != null) {
+            String raw = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
+                    .plainText().serialize(deathMsg);
             if (!raw.isBlank()) return raw;
         }
-        org.bukkit.entity.EntityType killerType = event.getEntity().getKiller() != null
-                ? org.bukkit.entity.EntityType.PLAYER : null;
-        if (killerType != null && event.getEntity().getKiller() != null) {
+        if (event.getEntity().getKiller() != null) {
             return "Killed by " + event.getEntity().getKiller().getName();
         }
         return "Unknown";

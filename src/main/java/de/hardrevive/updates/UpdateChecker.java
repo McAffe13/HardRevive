@@ -47,7 +47,7 @@ public final class UpdateChecker {
             conn.setRequestMethod("GET");
             conn.setConnectTimeout(5000);
             conn.setReadTimeout(5000);
-            conn.setRequestProperty("User-Agent", "HardRevive/" + plugin.getDescription().getVersion()
+            conn.setRequestProperty("User-Agent", "HardRevive/" + plugin.getPluginMeta().getVersion()
                     + " (https://modrinth.com/plugin/hardrevive)");
 
             if (conn.getResponseCode() != 200) {
@@ -60,7 +60,7 @@ public final class UpdateChecker {
                 Matcher matcher = VERSION_PATTERN.matcher(response);
                 if (matcher.find()) {
                     latestVersion = matcher.group(1);
-                    String current = plugin.getDescription().getVersion();
+                    String current = plugin.getPluginMeta().getVersion();
                     if (!current.equals(latestVersion)) {
                         updateAvailable = true;
                         Bukkit.getScheduler().runTask(plugin, () ->

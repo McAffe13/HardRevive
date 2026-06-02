@@ -5,23 +5,21 @@
  */
 package de.hardrevive.managers;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
 import de.hardrevive.HardRevive;
 import de.hardrevive.config.LanguageManager;
 import de.hardrevive.models.DeadPlayer;
 import de.hardrevive.utils.TimeUtils;
-import net.kyori.adventure.text.Component;
+import io.papermc.paper.ban.BanListType;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.BanList;
-import org.bukkit.BanEntry;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.ban.ProfileBanList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Date;
 import java.util.UUID;
 
 /**
- * Handles banning and unbanning of dead players.
+ * Handles banning and unbanning of dead players using Paper's profile ban list.
  */
 public final class BanManager {
 
@@ -35,21 +33,30 @@ public final class BanManager {
 
     public void banPlayer(@NotNull DeadPlayer deadPlayer) {
         String banMessage = buildBanMessage(deadPlayer);
-        BanList<OfflinePlayer> banList = plugin.getServer().getBanList(BanList.Type.PROFILE);
-        OfflinePlayer offline = plugin.getServer().getOfflinePlayer(deadPlayer.getUuid());
-        banList.addBan(offline.getPlayerProfile(), banMessage, (Date) null, "HardRevive");
+        PlayerProfile profile = resolveProfile(deadPlayer.getUuid());
+        if (profile == null) return;
+        profileBanList().addBan(profile, banMessage, (java.util.Date) null, "HardRevive");
     }
 
     public void unbanPlayer(@NotNull UUID uuid) {
-        OfflinePlayer offline = plugin.getServer().getOfflinePlayer(uuid);
-        BanList<OfflinePlayer> banList = plugin.getServer().getBanList(BanList.Type.PROFILE);
-        banList.pardon(offline.getPlayerProfile());
+        PlayerProfile profile = resolveProfile(uuid);
+        if (profile == null) return;
+        profileBanList().pardon(profile);
     }
 
     public boolean isBanned(@NotNull UUID uuid) {
+        PlayerProfile profile = resolveProfile(uuid);
+        if (profile == null) return false;
+        return profileBanList().isBanned(profile);
+    }
+
+    private @NotNull ProfileBanList profileBanList() {
+        return plugin.getServer().getBanList(BanListType.PROFILE);
+    }
+
+    private PlayerProfile resolveProfile(@NotNull UUID uuid) {
         OfflinePlayer offline = plugin.getServer().getOfflinePlayer(uuid);
-        BanList<OfflinePlayer> banList = plugin.getServer().getBanList(BanList.Type.PROFILE);
-        return banList.isBanned(offline.getPlayerProfile());
+        return offline.getPlayerProfile();
     }
 
     private @NotNull String buildBanMessage(@NotNull DeadPlayer deadPlayer) {

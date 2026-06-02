@@ -64,7 +64,7 @@ public final class PlayerJoinListener implements Listener {
         if (checker != null && checker.isUpdateAvailable()) {
             org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 lang.send(player, "update-available",
-                        Placeholder.unparsed("current", plugin.getDescription().getVersion()),
+                        Placeholder.unparsed("current", plugin.getPluginMeta().getVersion()),
                         Placeholder.unparsed("latest", checker.getLatestVersion()));
                 lang.send(player, "update-url");
             }, 40L);

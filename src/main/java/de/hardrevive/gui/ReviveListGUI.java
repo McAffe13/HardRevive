@@ -199,7 +199,8 @@ public final class ReviveListGUI implements InventoryHolder {
     public static @Nullable UUID getDeadPlayerUuid(@NotNull ItemStack item) {
         org.bukkit.inventory.meta.ItemMeta meta = item.getItemMeta();
         if (meta == null) return null;
-        org.bukkit.NamespacedKey key = new org.bukkit.NamespacedKey("hardrevive", "dead_player_uuid");
+        org.bukkit.NamespacedKey key = org.bukkit.NamespacedKey.fromString("hardrevive:dead_player_uuid");
+        if (key == null) return null;
         String uuidStr = meta.getPersistentDataContainer().get(key,
                 org.bukkit.persistence.PersistentDataType.STRING);
         if (uuidStr == null) return null;

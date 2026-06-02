@@ -7,9 +7,10 @@ package de.hardrevive.effects;
 
 import de.hardrevive.HardRevive;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -84,13 +85,17 @@ public final class EffectManager {
         String soundName = cfg.getString(path + ".sound", "");
         if (soundName.isBlank()) return;
 
-        try {
-            Sound sound = Sound.valueOf(soundName.toUpperCase());
-            float volume = (float) cfg.getDouble(path + ".volume", 1.0);
-            float pitch  = (float) cfg.getDouble(path + ".pitch", 1.0);
-            player.playSound(player.getLocation(), sound, volume, pitch);
-        } catch (IllegalArgumentException e) {
+        // Build namespaced key: treat bare names as minecraft:name, otherwise pass through
+        String normalized = soundName.toLowerCase();
+        if (!normalized.contains(":")) normalized = "minecraft:" + normalized;
+        NamespacedKey soundKey = NamespacedKey.fromString(normalized);
+        Sound sound = soundKey != null ? Registry.SOUNDS.get(soundKey) : null;
+        if (sound == null) {
             plugin.getLogger().warning("Unknown sound '" + soundName + "' in sounds.yml at key: " + key);
+            return;
         }
+        float volume = (float) cfg.getDouble(path + ".volume", 1.0);
+        float pitch  = (float) cfg.getDouble(path + ".pitch", 1.0);
+        player.playSound(player.getLocation(), sound, volume, pitch);
     }
 }

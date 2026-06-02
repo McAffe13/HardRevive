@@ -9,14 +9,14 @@ import de.hardrevive.HardRevive;
 import de.hardrevive.models.DeadPlayer;
 import de.hardrevive.utils.ColorUtils;
 import de.hardrevive.utils.ItemBuilder;
-import net.kyori.adventure.text.Component;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -24,79 +24,93 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
- * Anvil-style search GUI implemented using a plain inventory with a paper icon.
- * Because AnvilGUI requires a third-party library, this provides equivalent
- * functionality using a sign/chat-based input via a book + sign prompt approach,
- * but in practice we implement a simple chat-input search here for compatibility.
+ * One-shot chat-input search. Opens a small instruction GUI; after the player
+ * closes it the next chat message is captured as the search query and the
+ * revive list is filtered accordingly.
  *
- * The player sees an instruction item and their next chat message is used as query.
+ * <p>Both the close listener and the chat listener are registered as named
+ * {@link Listener} instances and unregistered immediately after use, preventing
+ * memory leaks.</p>
  */
-public final class SearchGUI implements InventoryHolder, Listener {
+public final class SearchGUI implements InventoryHolder {
 
     private final @NotNull HardRevive plugin;
     private final @NotNull Player viewer;
     private final @NotNull Inventory inventory;
-    private boolean waitingForInput = false;
+
+    /** Registered on GUI open; unregistered once the inventory closes. */
+    private final @NotNull CloseListener closeListener = new CloseListener();
 
     public SearchGUI(@NotNull HardRevive plugin, @NotNull Player viewer) {
         this.plugin = plugin;
         this.viewer = viewer;
 
         String title = plugin.getLanguageManager().getRaw("gui-search-title");
-        this.inventory = Bukkit.createInventory(this, 9, ColorUtils.parse(title.isBlank() ? "Search Player" : title));
+        this.inventory = Bukkit.createInventory(this, 9,
+                ColorUtils.parse(title.isBlank() ? "Search Player" : title));
         populate();
-        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     private void populate() {
-        String placeholder = plugin.getLanguageManager().getRaw("gui-search-placeholder");
         ItemStack paper = new ItemBuilder(Material.PAPER)
                 .name("<yellow>Search")
                 .loreStrings(List.of(
-                        "<gray>Type your search query in chat",
-                        "<gray>after closing this GUI.",
+                        "<gray>Close this GUI and type your query in chat.",
                         "",
-                        "<dark_gray>Partial names supported."
+                        "<dark_gray>Partial names • case-insensitive"
                 )).hideAll().build();
         inventory.setItem(4, paper);
     }
 
     public void open() {
+        Bukkit.getPluginManager().registerEvents(closeListener, plugin);
+        plugin.getEffectManager().playGuiSound(viewer, "gui-open");
         viewer.openInventory(inventory);
-        waitingForInput = true;
-    }
-
-    @EventHandler
-    public void onClose(InventoryCloseEvent e) {
-        if (!e.getPlayer().equals(viewer)) return;
-        if (!(e.getInventory().getHolder() instanceof SearchGUI)) return;
-        HandlerList.unregisterAll(this);
-
-        if (waitingForInput) {
-            viewer.sendMessage(ColorUtils.parse("<gray>Type the player name in chat:"));
-            // Register chat listener for one message
-            Listener chatListener = new Listener() {};
-            Bukkit.getPluginManager().registerEvents(new Listener() {
-                @EventHandler
-                public void onChat(io.papermc.paper.event.player.AsyncChatEvent event) {
-                    if (!event.getPlayer().equals(viewer)) return;
-                    event.setCancelled(true);
-                    HandlerList.unregisterAll(this);
-
-                    String query = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
-                            .plainText().serialize(event.message());
-
-                    Bukkit.getScheduler().runTask(plugin, () -> {
-                        List<DeadPlayer> results = plugin.getDeadPlayerManager().search(query);
-                        new ReviveListGUI(plugin, viewer, results, 0, query).open();
-                    });
-                }
-            }, plugin);
-        }
     }
 
     @Override
     public @NotNull Inventory getInventory() { return inventory; }
+
+    // -------------------------------------------------------------------------
+    // Inner close listener — unregisters itself and installs the chat listener
+    // -------------------------------------------------------------------------
+
+    private final class CloseListener implements Listener {
+
+        @EventHandler
+        public void onClose(@NotNull InventoryCloseEvent event) {
+            if (!event.getPlayer().equals(viewer)) return;
+            if (!(event.getInventory().getHolder() instanceof SearchGUI)) return;
+            HandlerList.unregisterAll(this);
+
+            viewer.sendMessage(ColorUtils.parse("<gray>Type the player name in chat:"));
+
+            ChatListener chatListener = new ChatListener();
+            Bukkit.getPluginManager().registerEvents(chatListener, plugin);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Inner chat listener — captures one message, then unregisters itself
+    // -------------------------------------------------------------------------
+
+    private final class ChatListener implements Listener {
+
+        @EventHandler
+        public void onChat(@NotNull AsyncChatEvent event) {
+            if (!event.getPlayer().getUniqueId().equals(viewer.getUniqueId())) return;
+            event.setCancelled(true);
+            HandlerList.unregisterAll(this);
+
+            String query = PlainTextComponentSerializer.plainText().serialize(event.message());
+
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                List<DeadPlayer> results = plugin.getDeadPlayerManager().search(query);
+                new ReviveListGUI(plugin, viewer, results, 0, query).open();
+            });
+        }
+    }
 }
