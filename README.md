@@ -2,7 +2,6 @@
 
 <div align="center">
 
-![HardRevive Logo Concept](.github/assets/banner.png)
 
 **Revive fallen players with custom craftable items, intuitive GUIs, and fully configurable death management.**
 
@@ -206,5 +205,5 @@ See [LICENSE](LICENSE) for the full license text.
 ## Links
 
 - [Modrinth](https://modrinth.com/plugin/hardrevive)
-- [GitHub Issues](https://github.com/hardrevive/HardRevive/issues)
-- [bStats Dashboard](https://bstats.org/plugin/bukkit/HardRevive/25000)
+- [GitHub Issues](https://github.com/McAffe13/HardRevive/issues)
+- [bStats Dashboard](https://bstats.org/plugin/bukkit/HardRevive/31753)

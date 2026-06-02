@@ -121,9 +121,9 @@ Yes. Copy `messages_en.yml` → `messages_xx.yml`, translate, set `language: xx`
 
 ## Links
 
-- [GitHub](https://github.com/hardrevive/HardRevive)
-- [Issues & Feature Requests](https://github.com/hardrevive/HardRevive/issues)
-- [bStats](https://bstats.org/plugin/bukkit/HardRevive/25000)
+- [GitHub](https://github.com/McAffe13/HardRevive)
+- [GitHub Issues](https://github.com/McAffe13/HardRevive/issues)
+- [bStats](https://bstats.org/plugin/bukkit/HardRevive/31753)
 
 ---
 
