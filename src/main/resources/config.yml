@@ -1,0 +1,39 @@
+# HardRevive Configuration
+# Plugin version: 1.0.0
+# Documentation: https://github.com/hardrevive/HardRevive/wiki
+
+# Language setting
+# Available: en, de
+language: en
+
+# Death system settings
+death-system:
+  # Mode: HARDCORE or NORMAL
+  # HARDCORE - Uses vanilla hardcore mechanics (world must be in hardcore mode)
+  # NORMAL   - Works on regular survival servers, bans players on death
+  mode: NORMAL
+
+# Broadcast settings
+# Control which events are broadcast to all online players
+broadcasts:
+  player-death: true
+  player-revive: true
+  player-banned: true
+
+# Update checker
+update-checker:
+  enabled: true
+  notify-admins: true
+  modrinth-project-id: "hardrevive"
+
+# bStats metrics
+bstats:
+  enabled: true
+
+# Storage settings
+storage:
+  # Currently only YAML is supported
+  type: YAML
+
+# Debug mode (enables verbose logging)
+debug: false

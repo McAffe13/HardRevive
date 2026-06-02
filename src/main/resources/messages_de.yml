@@ -1,0 +1,70 @@
+# HardRevive - Deutsche Nachrichten
+# Unterstützt MiniMessage-Format: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<dark_gray>[<gradient:dark_red:gold>HardRevive</gradient>]</dark_gray> "
+
+# Allgemeine Nachrichten
+no-permission: "<prefix><red>Dafür hast du keine Berechtigung."
+player-not-found: "<prefix><red>Spieler <yellow><player></yellow> wurde nicht gefunden."
+player-not-dead: "<prefix><red>Spieler <yellow><player></yellow> ist nicht tot."
+invalid-amount: "<prefix><red>Bitte gib eine gültige Anzahl an (1 oder mehr)."
+usage-give: "<prefix><yellow>Verwendung: <white>/revive give <player> [anzahl]"
+console-only: "<prefix><red>Diese Aktion kann nur von der Konsole ausgeführt werden."
+
+# Todesnachrichten
+player-died: "<prefix><yellow><player></yellow> <gray>ist gestorben. <dark_gray>(<cause>)"
+player-banned: "<prefix><dark_red><player></dark_red> <gray>wurde bis zur Wiederbelebung gebannt."
+
+# Bann-Nachricht beim Beitrittsversuch
+ban-message: |
+  <dark_red><bold>Du bist tot.</bold></dark_red>
+  <gray>Du wurdest am <yellow><death_date></yellow> getötet.
+  <gray>Todesursache: <yellow><cause></yellow>
+  <gray>Du musst wiederbelebt werden, um dem Server beizutreten.
+
+# Wiederbelebungsnachrichten
+player-revived: "<prefix><green><reviver></green> <gray>hat <yellow><player></yellow> wiederbelebt!"
+revive-broadcast: "<prefix><aqua><player></aqua> <gray>wurde von <green><reviver></green> wiederbelebt!"
+revive-item-consumed: "<prefix><gray>Wiederbelebungstotem verbraucht."
+not-enough-revival-items: "<prefix><red>Du hast keine Wiederbelebungstotems in deinem Inventar."
+
+# Give-Befehl
+give-success: "<prefix><gray><yellow><amount></yellow> <gold>Wiederbelebungstotem(s)</gold> an <aqua><player></aqua> gegeben."
+give-received: "<prefix><gray>Du hast <yellow><amount></yellow> <gold>Wiederbelebungstotem(s)</gold> erhalten."
+
+# List-Befehl
+list-header: "<prefix><gray>Tote Spieler <dark_gray>(<yellow><count></yellow><dark_gray>):"
+list-entry: "  <dark_gray>• <yellow><player></yellow> <dark_gray>- <gray>gestorben vor <white><time_ago></white>"
+list-empty: "<prefix><gray>Derzeit sind keine Spieler tot."
+
+# Info-Befehl
+info-header: "<prefix><gray>Info zu <yellow><player></yellow>:"
+info-death-date: "  <dark_gray>• <gray>Gestorben: <white><death_date>"
+info-cause: "  <dark_gray>• <gray>Todesursache: <white><cause>"
+info-time-ago: "  <dark_gray>• <gray>Zeit seit dem Tod: <white><time_ago>"
+info-revive-count: "  <dark_gray>• <gray>Gesamte Wiederbelebungen: <white><count>"
+
+# Reload-Befehl
+reload-success: "<prefix><green>Konfiguration erfolgreich neu geladen."
+reload-failed: "<prefix><red>Beim Neuladen der Konfiguration ist ein Fehler aufgetreten."
+
+# Hilfe-Befehl
+help-header: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-title: "  <gradient:dark_red:gold><bold>HardRevive</bold></gradient> <gray>v<version>"
+help-footer: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-reload: "  <gold>/revive reload <dark_gray>— <gray>Plugin neu laden"
+help-give: "  <gold>/revive give <player> [anzahl] <dark_gray>— <gray>Wiederbelebungsitems geben"
+help-list: "  <gold>/revive list <dark_gray>— <gray>Tote Spieler anzeigen"
+help-info: "  <gold>/revive info <player> <dark_gray>— <gray>Todesinformationen anzeigen"
+help-help: "  <gold>/revive help <dark_gray>— <gray>Dieses Hilfemenü anzeigen"
+
+# GUI-Nachrichten
+gui-search-placeholder: "Spielernamen eingeben..."
+gui-search-title: "Spieler suchen"
+gui-no-results: "<red>Keine Ergebnisse gefunden."
+
+# Update-Checker
+update-available: "<prefix><yellow>Eine neue Version von HardRevive ist verfügbar: <green><latest></green> <dark_gray>(aktuell: <gray><current></gray><dark_gray>)"
+update-url: "<prefix><gray>Download: <aqua><underlined>https://modrinth.com/plugin/hardrevive"
+no-update: "<prefix><green>HardRevive ist aktuell <dark_gray>(<gray>v<version></gray><dark_gray>)."
+update-check-failed: "<prefix><yellow>Update-Prüfung fehlgeschlagen."

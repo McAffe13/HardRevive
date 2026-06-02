@@ -1,0 +1,21 @@
+# HardRevive - Recipe Configuration
+
+recipe:
+  # Whether the crafting recipe is enabled
+  enabled: true
+
+  # Crafting grid shape (3 rows, each row 3 characters)
+  # Use spaces for empty slots
+  shape:
+    - "DED"
+    - "ETE"
+    - "DED"
+
+  # Ingredient mappings (character -> Minecraft material name)
+  ingredients:
+    D: DIAMOND_BLOCK
+    E: ECHO_SHARD
+    T: TOTEM_OF_UNDYING
+
+  # Amount of items produced per craft
+  result-amount: 1

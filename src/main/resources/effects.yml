@@ -1,0 +1,36 @@
+# HardRevive - Particle Effects Configuration
+# Particle names: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+
+effects:
+  # Particle effect when a player is revived
+  revive:
+    enabled: true
+    particle: TOTEM_OF_UNDYING
+    count: 50
+    spread-x: 0.5
+    spread-y: 1.0
+    spread-z: 0.5
+    speed: 0.1
+    offset-y: 0.5
+
+  # Particle effect when a revival item is used
+  item-use:
+    enabled: true
+    particle: SOUL_FIRE_FLAME
+    count: 20
+    spread-x: 0.3
+    spread-y: 0.5
+    spread-z: 0.3
+    speed: 0.05
+    offset-y: 0.5
+
+  # Particle effect broadcast on death
+  player-death:
+    enabled: true
+    particle: LARGE_SMOKE
+    count: 30
+    spread-x: 0.5
+    spread-y: 1.0
+    spread-z: 0.5
+    speed: 0.1
+    offset-y: 0.5

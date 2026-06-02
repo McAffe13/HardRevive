@@ -1,0 +1,50 @@
+name: HardRevive
+version: '${project.version}'
+main: de.hardrevive.HardRevive
+api-version: '1.21'
+description: Revive fallen players with custom craftable items, intuitive GUIs, and fully configurable death management.
+authors: [ HardRevive ]
+website: https://modrinth.com/plugin/hardrevive
+load: STARTUP
+
+commands:
+  revive:
+    description: Main HardRevive command
+    usage: /revive <reload|give|list|info|help>
+    permission: hardrevive.use
+    aliases: [ hr ]
+
+permissions:
+  hardrevive.admin:
+    description: Full access to all HardRevive features
+    default: op
+    children:
+      hardrevive.reload: true
+      hardrevive.give: true
+      hardrevive.list: true
+      hardrevive.info: true
+      hardrevive.update.notify: true
+
+  hardrevive.use:
+    description: Access to basic HardRevive commands
+    default: true
+
+  hardrevive.reload:
+    description: Permission to reload the plugin
+    default: op
+
+  hardrevive.give:
+    description: Permission to give revival items
+    default: op
+
+  hardrevive.list:
+    description: Permission to list dead players
+    default: op
+
+  hardrevive.info:
+    description: Permission to view dead player info
+    default: op
+
+  hardrevive.update.notify:
+    description: Receive update notifications on join
+    default: op

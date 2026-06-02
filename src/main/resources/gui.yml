@@ -1,0 +1,121 @@
+# HardRevive - GUI Configuration
+# Supports MiniMessage format for all text fields
+
+# ============================================================
+# Main Revive List GUI
+# ============================================================
+revive-list:
+  title: "<dark_gray>☠ <gradient:dark_red:gold>Dead Players</gradient> <dark_gray>☠"
+  rows: 6
+  players-per-page: 28
+
+  # Slot layout (0-53)
+  # Slots 0-44 can display players (rows 1-5, columns 1-9)
+  player-slots:
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+
+  fill-item:
+    material: BLACK_STAINED_GLASS_PANE
+    name: " "
+    slots: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+
+  search-button:
+    slot: 48
+    material: COMPASS
+    name: "<yellow>Search Player"
+    lore:
+      - "<dark_gray>• <gray>Click to search by name"
+
+  previous-page:
+    slot: 45
+    material: ARROW
+    name: "<yellow>Previous Page"
+    lore:
+      - "<gray>Page <white><current></white> of <white><total>"
+    disabled-material: GRAY_DYE
+    disabled-name: "<gray>Previous Page"
+
+  next-page:
+    slot: 53
+    material: ARROW
+    name: "<yellow>Next Page"
+    lore:
+      - "<gray>Page <white><current></white> of <white><total>"
+    disabled-material: GRAY_DYE
+    disabled-name: "<gray>Next Page"
+
+  page-info:
+    slot: 49
+    material: PAPER
+    name: "<gray>Page <white><current></white> / <white><total>"
+
+# ============================================================
+# Player Entry (shown as skull in the revive list)
+# ============================================================
+player-entry:
+  name: "<yellow><bold><player>"
+  lore:
+    - ""
+    - "<dark_gray>• <gray>Died: <white><death_date>"
+    - "<dark_gray>• <gray>Cause: <white><cause>"
+    - "<dark_gray>• <gray>Time ago: <white><time_ago>"
+    - ""
+    - "<dark_red>Click to revive"
+
+# ============================================================
+# Confirmation GUI
+# ============================================================
+confirm:
+  title: "<dark_red>Confirm Revival"
+  rows: 3
+
+  fill-item:
+    material: BLACK_STAINED_GLASS_PANE
+    name: " "
+    slots: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 22, 24, 25, 26 ]
+
+  player-head:
+    slot: 13
+
+  confirm-button:
+    slot: 11
+    material: LIME_STAINED_GLASS_PANE
+    name: "<green><bold>✔ Confirm"
+    lore:
+      - "<gray>Revive <yellow><player></yellow>"
+      - ""
+      - "<dark_gray>Requires: <gold>1x Revival Totem"
+
+  cancel-button:
+    slot: 15
+    material: RED_STAINED_GLASS_PANE
+    name: "<red><bold>✖ Cancel"
+    lore:
+      - "<gray>Go back to the list"

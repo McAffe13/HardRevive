@@ -1,0 +1,33 @@
+# HardRevive - Items Configuration
+# Supports MiniMessage format for name and lore
+
+revive-item:
+  # Minecraft material name
+  material: TOTEM_OF_UNDYING
+
+  # Display name (MiniMessage)
+  name: "<gold><bold>Revival Totem"
+
+  # Item lore (MiniMessage)
+  lore:
+    - ""
+    - "<gray>Use this item to revive a"
+    - "<gray>fallen player on this server."
+    - ""
+    - "<dark_gray>Right-click to open the"
+    - "<dark_gray>revival interface."
+    - ""
+    - "<gradient:dark_red:gold>⚠ Consumed on use ⚠</gradient>"
+
+  # Whether the item should have an enchantment glint
+  glint: true
+
+  # Custom model data (0 = disabled)
+  custom-model-data: 0
+
+  # Item flags to hide
+  # Options: HIDE_ATTRIBUTES, HIDE_ENCHANTS, HIDE_UNBREAKABLE, HIDE_DESTROYS,
+  #          HIDE_PLACED_ON, HIDE_ADDITIONAL_TOOLTIP, HIDE_DYE, HIDE_ARMOR_TRIM
+  item-flags:
+    - HIDE_ATTRIBUTES
+    - HIDE_ENCHANTS
