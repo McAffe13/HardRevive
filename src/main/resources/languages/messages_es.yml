@@ -68,3 +68,9 @@ update-available: "<prefix><yellow>Nueva versión de HardRevive disponible: <gre
 update-url: "<prefix><gray>Descarga: <aqua><underlined>https://modrinth.com/plugin/hardrevive"
 no-update: "<prefix><green>HardRevive está actualizado <dark_gray>(<gray>v<version></gray><dark_gray>)."
 update-check-failed: "<prefix><yellow>No se pudo verificar actualizaciones."
+
+# Recipe command
+recipe-disabled: "<prefix><red>The crafting recipe is disabled."
+recipe-hologram-spawned: "<prefix><green>Recipe hologram spawned. Run again to remove."
+recipe-hologram-removed: "<prefix><yellow>Recipe hologram removed."
+recipe-hologram-user: "<prefix><gray>Recipe displayed. <dark_gray>(Disappears after <yellow>60s</yellow>, on move or sneak)"

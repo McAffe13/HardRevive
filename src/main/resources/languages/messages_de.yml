@@ -63,6 +63,12 @@ gui-search-placeholder: "Spielernamen eingeben..."
 gui-search-title: "Spieler suchen"
 gui-no-results: "<red>Keine Ergebnisse gefunden."
 
+# Recipe-Befehl
+recipe-disabled: "<prefix><red>Das Crafting-Rezept ist deaktiviert."
+recipe-hologram-spawned: "<prefix><green>Rezept-Hologramm spawnt. Nochmal ausführen zum Entfernen."
+recipe-hologram-removed: "<prefix><yellow>Rezept-Hologramm entfernt."
+recipe-hologram-user: "<prefix><gray>Rezept wird angezeigt. <dark_gray>(Verschwindet nach <yellow>60s</yellow>, beim Bewegen oder Schleichen)"
+
 # Update-Checker
 update-available: "<prefix><yellow>Eine neue Version von HardRevive ist verfügbar: <green><latest></green> <dark_gray>(aktuell: <gray><current></gray><dark_gray>)"
 update-url: "<prefix><gray>Download: <aqua><underlined>https://modrinth.com/plugin/hardrevive"

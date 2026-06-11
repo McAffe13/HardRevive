@@ -16,7 +16,7 @@ Revive fallen players with custom craftable items, intuitive GUIs, and fully con
 - `multiplayer`
 
 ## Tags / Labels
-`hardcore` · `death` · `revive` · `survival` · `pvp` · `ban` · `totem` · `gui` · `crafting`
+`hardcore` · `death` · `revive` · `survival` · `pvp` · `ban` · `totem` · `gui` · `crafting` · `hologram`
 
 ## Loaders
 - `paper`

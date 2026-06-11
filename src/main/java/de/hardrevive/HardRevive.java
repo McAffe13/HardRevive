@@ -5,11 +5,13 @@
  */
 package de.hardrevive;
 
+import de.hardrevive.commands.RecipeCommand;
 import de.hardrevive.commands.ReviveCommand;
 import de.hardrevive.config.ConfigManager;
 import de.hardrevive.config.LanguageManager;
 import de.hardrevive.effects.EffectManager;
 import de.hardrevive.gui.ReviveListGUI;
+import de.hardrevive.hologram.RecipeHologramManager;
 import de.hardrevive.items.ReviveItemManager;
 import de.hardrevive.listeners.*;
 import de.hardrevive.managers.BanManager;
@@ -45,6 +47,7 @@ public final class HardRevive extends JavaPlugin {
     private RecipeManager recipeManager;
     private EffectManager effectManager;
     private ReviveService reviveService;
+    private RecipeHologramManager recipeHologramManager;
     private @Nullable UpdateChecker updateChecker;
 
     @Override
@@ -67,6 +70,7 @@ public final class HardRevive extends JavaPlugin {
         effectManager     = new EffectManager(this);
         reviveService     = new ReviveService(this);
 
+        recipeHologramManager = new RecipeHologramManager(this);
         recipeManager.register();
         registerListeners();
         registerCommands();
@@ -83,6 +87,7 @@ public final class HardRevive extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        recipeHologramManager.removeAll();
         dataStorage.save();
         recipeManager.unregister();
         getLogger().info("HardRevive disabled. Data saved.");
@@ -97,6 +102,7 @@ public final class HardRevive extends JavaPlugin {
         dataStorage.load();
         reviveItemManager.reload();
         recipeManager.reload();
+        recipeHologramManager.reloadAdminHolograms();
         getLogger().info("HardRevive reloaded.");
     }
 
@@ -110,14 +116,21 @@ public final class HardRevive extends JavaPlugin {
         pm.registerEvents(new PlayerJoinListener(this), this);
         pm.registerEvents(new InventoryClickListener(this), this);
         pm.registerEvents(new ReviveItemListener(this), this);
+        pm.registerEvents(recipeHologramManager, this);
     }
 
     private void registerCommands() {
-        ReviveCommand executor = new ReviveCommand(this);
-        var cmd = getCommand("revive");
-        if (cmd != null) {
-            cmd.setExecutor(executor);
-            cmd.setTabCompleter(executor);
+        ReviveCommand reviveExecutor = new ReviveCommand(this);
+        var reviveCmd = getCommand("revive");
+        if (reviveCmd != null) {
+            reviveCmd.setExecutor(reviveExecutor);
+            reviveCmd.setTabCompleter(reviveExecutor);
+        }
+
+        RecipeCommand recipeExecutor = new RecipeCommand(this);
+        var recipeCmd = getCommand("recipe");
+        if (recipeCmd != null) {
+            recipeCmd.setExecutor(recipeExecutor);
         }
     }
 
@@ -155,8 +168,9 @@ public final class HardRevive extends JavaPlugin {
     public @NotNull DeadPlayerManager getDeadPlayerManager() { return java.util.Objects.requireNonNull(deadPlayerManager); }
     public @NotNull BanManager getBanManager()               { return java.util.Objects.requireNonNull(banManager); }
     public @NotNull ReviveItemManager getReviveItemManager() { return java.util.Objects.requireNonNull(reviveItemManager); }
-    public @NotNull RecipeManager getRecipeManager()         { return java.util.Objects.requireNonNull(recipeManager); }
-    public @NotNull EffectManager getEffectManager()         { return java.util.Objects.requireNonNull(effectManager); }
-    public @NotNull ReviveService getReviveService()         { return java.util.Objects.requireNonNull(reviveService); }
-    public @Nullable UpdateChecker getUpdateChecker()        { return updateChecker; }
+    public @NotNull RecipeManager getRecipeManager()                 { return java.util.Objects.requireNonNull(recipeManager); }
+    public @NotNull EffectManager getEffectManager()                 { return java.util.Objects.requireNonNull(effectManager); }
+    public @NotNull ReviveService getReviveService()                 { return java.util.Objects.requireNonNull(reviveService); }
+    public @NotNull RecipeHologramManager getRecipeHologramManager() { return java.util.Objects.requireNonNull(recipeHologramManager); }
+    public @Nullable UpdateChecker getUpdateChecker()                { return updateChecker; }
 }

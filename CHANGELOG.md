@@ -1,9 +1,17 @@
 # Changelog
 
-All notable changes to HardRevive will be documented in this file.
 
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+---
+
+## [1.1.0] — 2026-06-11
+
+### Added
+
+- `/recipe` command (alias `/crafting`) — spawns a floating 3-D hologram of the Revival Totem crafting recipe using Display entities
+  - Admins (`hardrevive.recipe.admin`): permanent hologram, toggle off by running the command again; rebuilt automatically on `/revive reload`
+  - Players (`hardrevive.recipe`): temporary hologram that disappears after 60 seconds, when moving more than 6 blocks away, or when sneaking
+- New permission nodes: `hardrevive.recipe` (default: true), `hardrevive.recipe.admin` (default: op, child of `hardrevive.admin`)
+- New language keys: `recipe-disabled`, `recipe-hologram-spawned`, `recipe-hologram-removed`, `recipe-hologram-user` (all 8 bundled languages updated)
 
 ---
 

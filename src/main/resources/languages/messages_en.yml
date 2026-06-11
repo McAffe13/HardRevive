@@ -63,6 +63,12 @@ gui-search-placeholder: "Enter player name..."
 gui-search-title: "Search Player"
 gui-no-results: "<red>No results found."
 
+# Recipe command
+recipe-disabled: "<prefix><red>The crafting recipe is disabled."
+recipe-hologram-spawned: "<prefix><green>Recipe hologram spawned. Run again to remove."
+recipe-hologram-removed: "<prefix><yellow>Recipe hologram removed."
+recipe-hologram-user: "<prefix><gray>Recipe displayed. <dark_gray>(Disappears after <yellow>60s</yellow>, on move or sneak)"
+
 # Update checker
 update-available: "<prefix><yellow>A new version of HardRevive is available: <green><latest></green> <dark_gray>(current: <gray><current></gray><dark_gray>)"
 update-url: "<prefix><gray>Download: <aqua><underlined>https://modrinth.com/plugin/hardrevive"

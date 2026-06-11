@@ -12,13 +12,14 @@ Works on **Hardcore** and **normal Survival** servers.
 
 - **Revival Totem** — fully configurable item (material, name, lore, glint, CustomModelData, ItemFlags)
 - **Configurable crafting recipe** — change any ingredient or the entire shape
+- **Recipe hologram** — `/recipe` spawns a floating 3-D display of the crafting grid; permanent for admins, 60-second / move / sneak for regular players
 - **Automatic ban on death** — dead players cannot rejoin until revived; ban lifted automatically on revival
 - **Paginated revive GUI** — browse dead players by skull, name, death time, cause, and time-since-death
 - **Search** — filter dead players by partial name via chat input
 - **Confirmation screen** — prevents accidental revives
 - **Hardcore & Normal mode** — works on both server types
 - **Broadcasts** — configurable death/ban/revive announcements
-- **Full language support** — English and German bundled; add your own `messages_xx.yml`
+- **Full language support** — 8 languages bundled; add your own `messages_xx.yml`
 - **Sounds & particles** — every event has its own configurable sound and particle effect
 - **bStats** — optional anonymous analytics with custom charts
 - **Update checker** — async Modrinth version check on startup; notifies admins on join
@@ -34,8 +35,9 @@ Works on **Hardcore** and **normal Survival** servers.
 | `/revive give <player> [amount]` | Give Revival Totems |
 | `/revive list` | List dead players + open GUI |
 | `/revive info <player>` | Show death details |
+| `/recipe` | Show crafting recipe hologram |
 
-Alias: `/hr`
+Aliases: `/hr` · `/crafting`
 
 ---
 
@@ -49,6 +51,8 @@ Alias: `/hr`
 | `hardrevive.list` | View dead players | OP |
 | `hardrevive.info` | View death info | OP |
 | `hardrevive.update.notify` | Receive update alerts | OP |
+| `hardrevive.recipe` | Show recipe hologram (temporary) | Everyone |
+| `hardrevive.recipe.admin` | Show recipe hologram (permanent toggle) | OP |
 
 ---
 

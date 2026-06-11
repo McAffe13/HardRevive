@@ -13,6 +13,11 @@ commands:
     usage: /revive <reload|give|list|info|help>
     permission: hardrevive.use
     aliases: [ hr ]
+  recipe:
+    description: Show the Revival Totem crafting recipe as a hologram
+    usage: /recipe
+    permission: hardrevive.recipe
+    aliases: [ crafting ]
 
 permissions:
   hardrevive.admin:
@@ -24,6 +29,7 @@ permissions:
       hardrevive.list: true
       hardrevive.info: true
       hardrevive.update.notify: true
+      hardrevive.recipe.admin: true
 
   hardrevive.use:
     description: Access to basic HardRevive commands
@@ -47,4 +53,12 @@ permissions:
 
   hardrevive.update.notify:
     description: Receive update notifications on join
+    default: op
+
+  hardrevive.recipe:
+    description: View the Revival Totem crafting recipe hologram (temporary)
+    default: true
+
+  hardrevive.recipe.admin:
+    description: View the crafting recipe hologram permanently (toggle)
     default: op
