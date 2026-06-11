@@ -85,11 +85,19 @@ public final class EffectManager {
         String soundName = cfg.getString(path + ".sound", "");
         if (soundName.isBlank()) return;
 
-        // Build namespaced key: treat bare names as minecraft:name, otherwise pass through
+        // Try namespaced key first (dot-notation: block.chest.open)
         String normalized = soundName.toLowerCase();
         if (!normalized.contains(":")) normalized = "minecraft:" + normalized;
         NamespacedKey soundKey = NamespacedKey.fromString(normalized);
         Sound sound = soundKey != null ? Registry.SOUNDS.get(soundKey) : null;
+
+        // Fallback: Bukkit enum name (underscore-notation: BLOCK_CHEST_OPEN)
+        if (sound == null) {
+            try {
+                sound = Sound.valueOf(soundName.toUpperCase());
+            } catch (IllegalArgumentException ignored) {}
+        }
+
         if (sound == null) {
             plugin.getLogger().warning("Unknown sound '" + soundName + "' in sounds.yml at key: " + key);
             return;

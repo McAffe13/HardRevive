@@ -1,0 +1,70 @@
+# HardRevive - Mensagens em Português
+# Suporta formato MiniMessage: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<dark_gray>[<gradient:dark_red:gold>HardRevive</gradient>]</dark_gray> "
+
+# Mensagens gerais
+no-permission: "<prefix><red>Você não tem permissão para fazer isso."
+player-not-found: "<prefix><red>Jogador <yellow><player></yellow> não foi encontrado."
+player-not-dead: "<prefix><red>Jogador <yellow><player></yellow> não está morto."
+invalid-amount: "<prefix><red>Por favor, insira uma quantidade válida (1 ou mais)."
+usage-give: "<prefix><yellow>Uso: <white>/revive give <player> [quantidade]"
+console-only: "<prefix><red>Esta ação só pode ser executada pelo console."
+
+# Mensagens de morte
+player-died: "<prefix><yellow><player></yellow> <gray>morreu. <dark_gray>(<cause>)"
+player-banned: "<prefix><dark_red><player></dark_red> <gray>foi banido até ser revivido."
+
+# Mensagem de ban exibida ao jogador morto ao tentar entrar
+ban-message: |
+  <dark_red><bold>Você está morto.</bold></dark_red>
+  <gray>Você foi morto em <yellow><death_date></yellow>.
+  <gray>Causa: <yellow><cause></yellow>
+  <gray>Você precisa ser revivido para entrar no servidor.
+
+# Mensagens de reviver
+player-revived: "<prefix><green><reviver></green> <gray>reviveu <yellow><player></yellow>!"
+revive-broadcast: "<prefix><aqua><player></aqua> <gray>foi trazido de volta à vida por <green><reviver></green>!"
+revive-item-consumed: "<prefix><gray>Totem de Ressurreição consumido."
+not-enough-revival-items: "<prefix><red>Você não tem Totens de Ressurreição no seu inventário."
+
+# Comando give
+give-success: "<prefix><gray>Deu <yellow><amount></yellow> <gold>Totem(ns) de Ressurreição</gold> para <aqua><player></aqua>."
+give-received: "<prefix><gray>Você recebeu <yellow><amount></yellow> <gold>Totem(ns) de Ressurreição</gold>."
+
+# Comando list
+list-header: "<prefix><gray>Jogadores mortos <dark_gray>(<yellow><count></yellow><dark_gray>):"
+list-entry: "  <dark_gray>• <yellow><player></yellow> <dark_gray>- <gray>morreu há <white><time_ago></white>"
+list-empty: "<prefix><gray>Nenhum jogador está morto no momento."
+
+# Comando info
+info-header: "<prefix><gray>Info de <yellow><player></yellow>:"
+info-death-date: "  <dark_gray>• <gray>Morreu: <white><death_date>"
+info-cause: "  <dark_gray>• <gray>Causa: <white><cause>"
+info-time-ago: "  <dark_gray>• <gray>Tempo desde a morte: <white><time_ago>"
+info-revive-count: "  <dark_gray>• <gray>Total de ressurreições: <white><count>"
+
+# Comando reload
+reload-success: "<prefix><green>Configuração recarregada com sucesso."
+reload-failed: "<prefix><red>Ocorreu um erro ao recarregar a configuração."
+
+# Comando help
+help-header: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-title: "  <gradient:dark_red:gold><bold>HardRevive</bold></gradient> <gray>v<version>"
+help-footer: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-reload: "  <gold>/revive reload <dark_gray>— <gray>Recarregar o plugin"
+help-give: "  <gold>/revive give <player> [quantidade] <dark_gray>— <gray>Dar itens de ressurreição"
+help-list: "  <gold>/revive list <dark_gray>— <gray>Listar jogadores mortos"
+help-info: "  <gold>/revive info <player> <dark_gray>— <gray>Ver informações de morte"
+help-help: "  <gold>/revive help <dark_gray>— <gray>Mostrar este menu de ajuda"
+
+# Mensagens GUI
+gui-search-placeholder: "Digite o nome do jogador..."
+gui-search-title: "Buscar Jogador"
+gui-no-results: "<red>Nenhum resultado encontrado."
+
+# Verificador de atualizações
+update-available: "<prefix><yellow>Uma nova versão do HardRevive está disponível: <green><latest></green> <dark_gray>(atual: <gray><current></gray><dark_gray>)"
+update-url: "<prefix><gray>Download: <aqua><underlined>https://modrinth.com/plugin/hardrevive"
+no-update: "<prefix><green>HardRevive está atualizado <dark_gray>(<gray>v<version></gray><dark_gray>)."
+update-check-failed: "<prefix><yellow>Não foi possível verificar atualizações."

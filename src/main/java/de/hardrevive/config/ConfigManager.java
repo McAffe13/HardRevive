@@ -102,7 +102,6 @@ public final class ConfigManager {
         return mainConfig.getString("update-checker.modrinth-project-id", "hardrevive");
     }
 
-    public boolean isBStatsEnabled()   { return mainConfig.getBoolean("bstats.enabled", true); }
     public boolean isDebugEnabled()    { return mainConfig.getBoolean("debug", false); }
 
     // -------------------------------------------------------------------------

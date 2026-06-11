@@ -71,9 +71,7 @@ public final class HardRevive extends JavaPlugin {
         registerListeners();
         registerCommands();
 
-        if (configManager.isBStatsEnabled()) {
-            setupBStats();
-        }
+        setupBStats();
 
         if (configManager.isUpdateCheckerEnabled()) {
             updateChecker = new UpdateChecker(this);

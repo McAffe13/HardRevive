@@ -84,8 +84,11 @@ public final class UpdateChecker {
     }
 
     private void scheduleLangMessage(@NotNull String key) {
-        Bukkit.getScheduler().runTask(plugin, () ->
-                plugin.getLogger().info(plugin.getLanguageManager().getRaw(key)));
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            net.kyori.adventure.text.Component msg = plugin.getLanguageManager().get(key);
+            plugin.getLogger().info(
+                net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText().serialize(msg));
+        });
     }
 
     public boolean isUpdateAvailable() { return updateAvailable; }

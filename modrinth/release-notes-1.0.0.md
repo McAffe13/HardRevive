@@ -44,5 +44,5 @@
 
 ## Notes
 
-- This is the initial release. Please report any bugs on [GitHub Issues](https://github.com/hardrevive/HardRevive/issues).
+- This is the initial release. Please report any bugs on [GitHub Issues](https://github.com/McAffe13/HardRevive/issues).
 - The bStats plugin ID (`25000`) is a placeholder — it will be updated after registration.

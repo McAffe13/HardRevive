@@ -5,48 +5,48 @@ sounds:
   # Sound played when a player is revived (played to the revived player)
   revive-success:
     enabled: true
-    sound: ENTITY_PLAYER_LEVELUP
+    sound: entity.player.levelup
     volume: 1.0
     pitch: 1.0
 
   # Sound played to the player performing the revival
   revive-performed:
     enabled: true
-    sound: ITEM_TOTEM_USE
+    sound: item.totem.use
     volume: 1.0
     pitch: 1.0
 
   # Sound played when GUI is opened
   gui-open:
     enabled: true
-    sound: BLOCK_CHEST_OPEN
+    sound: block.chest.open
     volume: 0.5
     pitch: 1.2
 
   # Sound played when clicking a dead player entry
   gui-click:
     enabled: true
-    sound: UI_BUTTON_CLICK
+    sound: ui.button.click
     volume: 0.6
     pitch: 1.0
 
   # Sound played on confirmation
   gui-confirm:
     enabled: true
-    sound: BLOCK_NOTE_BLOCK_PLING
+    sound: block.note_block.pling
     volume: 1.0
     pitch: 1.5
 
   # Sound played on cancel
   gui-cancel:
     enabled: true
-    sound: BLOCK_NOTE_BLOCK_BASS
+    sound: block.note_block.bass
     volume: 1.0
     pitch: 0.8
 
   # Sound played when a player dies
   player-death:
     enabled: true
-    sound: ENTITY_WITHER_SPAWN
+    sound: entity.wither.spawn
     volume: 0.7
     pitch: 1.2

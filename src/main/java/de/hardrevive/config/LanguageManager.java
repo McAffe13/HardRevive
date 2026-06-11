@@ -37,22 +37,22 @@ public final class LanguageManager {
     }
 
     public void load(@NotNull String lang) {
-        String fileName = "messages_" + lang + ".yml";
-        File file = new File(plugin.getDataFolder(), fileName);
+        String resourcePath = "languages/messages_" + lang + ".yml";
+        File file = new File(plugin.getDataFolder(), resourcePath);
 
         if (!file.exists()) {
-            InputStream resource = plugin.getResource(fileName);
+            InputStream resource = plugin.getResource(resourcePath);
             if (resource == null) {
-                plugin.getLogger().warning("Language file not found: " + fileName + ". Falling back to English.");
-                fileName = "messages_en.yml";
-                file = new File(plugin.getDataFolder(), fileName);
+                plugin.getLogger().warning("Language file not found: " + resourcePath + ". Falling back to English.");
+                resourcePath = "languages/messages_en.yml";
+                file = new File(plugin.getDataFolder(), resourcePath);
             }
-            plugin.saveResource(fileName, false);
+            plugin.saveResource(resourcePath, false);
         }
 
         messages = YamlConfiguration.loadConfiguration(file);
 
-        InputStream defaultStream = plugin.getResource(fileName);
+        InputStream defaultStream = plugin.getResource(resourcePath);
         if (defaultStream != null) {
             YamlConfiguration defaults = YamlConfiguration.loadConfiguration(
                     new InputStreamReader(defaultStream, StandardCharsets.UTF_8));

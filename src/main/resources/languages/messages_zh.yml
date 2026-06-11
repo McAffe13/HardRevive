@@ -1,0 +1,70 @@
+# HardRevive - 中文消息（简体）
+# 支持 MiniMessage 格式：https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<dark_gray>[<gradient:dark_red:gold>HardRevive</gradient>]</dark_gray> "
+
+# 通用消息
+no-permission: "<prefix><red>你没有权限执行此操作。"
+player-not-found: "<prefix><red>找不到玩家 <yellow><player></yellow>。"
+player-not-dead: "<prefix><red>玩家 <yellow><player></yellow> 未死亡。"
+invalid-amount: "<prefix><red>请输入有效数量（1 或更多）。"
+usage-give: "<prefix><yellow>用法：<white>/revive give <player> [数量]"
+console-only: "<prefix><red>此操作只能从控制台执行。"
+
+# 死亡消息
+player-died: "<prefix><yellow><player></yellow> <gray>已死亡。<dark_gray>（<cause>）"
+player-banned: "<prefix><dark_red><player></dark_red> <gray>已被封禁，直到被复活。"
+
+# 死亡玩家尝试加入时显示的封禁消息
+ban-message: |
+  <dark_red><bold>你已死亡。</bold></dark_red>
+  <gray>你于 <yellow><death_date></yellow> 被击杀。
+  <gray>死因：<yellow><cause></yellow>
+  <gray>你必须被复活才能重新加入服务器。
+
+# 复活消息
+player-revived: "<prefix><green><reviver></green> <gray>复活了 <yellow><player></yellow>！"
+revive-broadcast: "<prefix><aqua><player></aqua> <gray>被 <green><reviver></green> 带回了人间！"
+revive-item-consumed: "<prefix><gray>复活图腾已消耗。"
+not-enough-revival-items: "<prefix><red>你的物品栏中没有复活图腾。"
+
+# give 命令
+give-success: "<prefix><gray>已给予 <aqua><player></aqua> <yellow><amount></yellow> 个<gold>复活图腾</gold>。"
+give-received: "<prefix><gray>你收到了 <yellow><amount></yellow> 个<gold>复活图腾</gold>。"
+
+# list 命令
+list-header: "<prefix><gray>死亡玩家 <dark_gray>（<yellow><count></yellow><dark_gray>）："
+list-entry: "  <dark_gray>• <yellow><player></yellow> <dark_gray>- <gray><white><time_ago></white>前死亡"
+list-empty: "<prefix><gray>当前没有玩家死亡。"
+
+# info 命令
+info-header: "<prefix><gray><yellow><player></yellow> 的信息："
+info-death-date: "  <dark_gray>• <gray>死亡时间：<white><death_date>"
+info-cause: "  <dark_gray>• <gray>死因：<white><cause>"
+info-time-ago: "  <dark_gray>• <gray>距死亡时间：<white><time_ago>"
+info-revive-count: "  <dark_gray>• <gray>总复活次数：<white><count>"
+
+# reload 命令
+reload-success: "<prefix><green>配置已成功重载。"
+reload-failed: "<prefix><red>重载配置时发生错误。"
+
+# help 命令
+help-header: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-title: "  <gradient:dark_red:gold><bold>HardRevive</bold></gradient> <gray>v<version>"
+help-footer: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-reload: "  <gold>/revive reload <dark_gray>— <gray>重载插件"
+help-give: "  <gold>/revive give <player> [数量] <dark_gray>— <gray>给予复活物品"
+help-list: "  <gold>/revive list <dark_gray>— <gray>列出死亡玩家"
+help-info: "  <gold>/revive info <player> <dark_gray>— <gray>查看玩家死亡信息"
+help-help: "  <gold>/revive help <dark_gray>— <gray>显示此帮助菜单"
+
+# GUI 消息
+gui-search-placeholder: "输入玩家名称..."
+gui-search-title: "搜索玩家"
+gui-no-results: "<red>未找到结果。"
+
+# 更新检查
+update-available: "<prefix><yellow>HardRevive 有新版本可用：<green><latest></green> <dark_gray>（当前：<gray><current></gray><dark_gray>）"
+update-url: "<prefix><gray>下载：<aqua><underlined>https://modrinth.com/plugin/hardrevive"
+no-update: "<prefix><green>HardRevive 已是最新版本 <dark_gray>（<gray>v<version></gray><dark_gray>）。"
+update-check-failed: "<prefix><yellow>无法检查更新。"

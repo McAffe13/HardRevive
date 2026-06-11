@@ -1,0 +1,70 @@
+# HardRevive - Messages Français
+# Compatible avec le format MiniMessage : https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<dark_gray>[<gradient:dark_red:gold>HardRevive</gradient>]</dark_gray> "
+
+# Messages généraux
+no-permission: "<prefix><red>Vous n'avez pas la permission de faire cela."
+player-not-found: "<prefix><red>Le joueur <yellow><player></yellow> est introuvable."
+player-not-dead: "<prefix><red>Le joueur <yellow><player></yellow> n'est pas mort."
+invalid-amount: "<prefix><red>Veuillez entrer un montant valide (1 ou plus)."
+usage-give: "<prefix><yellow>Utilisation : <white>/revive give <player> [quantité]"
+console-only: "<prefix><red>Cette action ne peut être effectuée que depuis la console."
+
+# Messages de mort
+player-died: "<prefix><yellow><player></yellow> <gray>est mort. <dark_gray>(<cause>)"
+player-banned: "<prefix><dark_red><player></dark_red> <gray>a été banni jusqu'à sa résurrection."
+
+# Message de ban affiché au joueur mort lors d'une tentative de connexion
+ban-message: |
+  <dark_red><bold>Vous êtes mort.</bold></dark_red>
+  <gray>Vous avez été tué le <yellow><death_date></yellow>.
+  <gray>Cause : <yellow><cause></yellow>
+  <gray>Vous devez être ressuscité pour rejoindre le serveur.
+
+# Messages de résurrection
+player-revived: "<prefix><green><reviver></green> <gray>a ressuscité <yellow><player></yellow> !"
+revive-broadcast: "<prefix><aqua><player></aqua> <gray>a été ramené à la vie par <green><reviver></green> !"
+revive-item-consumed: "<prefix><gray>Totem de résurrection consommé."
+not-enough-revival-items: "<prefix><red>Vous n'avez pas de Totem de Résurrection dans votre inventaire."
+
+# Commande give
+give-success: "<prefix><gray>Vous avez donné <yellow><amount></yellow> <gold>Totem(s) de Résurrection</gold> à <aqua><player></aqua>."
+give-received: "<prefix><gray>Vous avez reçu <yellow><amount></yellow> <gold>Totem(s) de Résurrection</gold>."
+
+# Commande list
+list-header: "<prefix><gray>Joueurs morts <dark_gray>(<yellow><count></yellow><dark_gray>) :"
+list-entry: "  <dark_gray>• <yellow><player></yellow> <dark_gray>- <gray>mort il y a <white><time_ago></white>"
+list-empty: "<prefix><gray>Aucun joueur n'est actuellement mort."
+
+# Commande info
+info-header: "<prefix><gray>Infos sur <yellow><player></yellow> :"
+info-death-date: "  <dark_gray>• <gray>Mort le : <white><death_date>"
+info-cause: "  <dark_gray>• <gray>Cause : <white><cause>"
+info-time-ago: "  <dark_gray>• <gray>Temps depuis la mort : <white><time_ago>"
+info-revive-count: "  <dark_gray>• <gray>Résurrections totales : <white><count>"
+
+# Commande reload
+reload-success: "<prefix><green>Configuration rechargée avec succès."
+reload-failed: "<prefix><red>Une erreur s'est produite lors du rechargement."
+
+# Commande help
+help-header: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-title: "  <gradient:dark_red:gold><bold>HardRevive</bold></gradient> <gray>v<version>"
+help-footer: "<dark_gray>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+help-reload: "  <gold>/revive reload <dark_gray>— <gray>Recharger le plugin"
+help-give: "  <gold>/revive give <player> [quantité] <dark_gray>— <gray>Donner des objets de résurrection"
+help-list: "  <gold>/revive list <dark_gray>— <gray>Lister les joueurs morts"
+help-info: "  <gold>/revive info <player> <dark_gray>— <gray>Voir les infos de mort"
+help-help: "  <gold>/revive help <dark_gray>— <gray>Afficher ce menu d'aide"
+
+# Messages GUI
+gui-search-placeholder: "Entrez le nom du joueur..."
+gui-search-title: "Rechercher un joueur"
+gui-no-results: "<red>Aucun résultat trouvé."
+
+# Vérificateur de mises à jour
+update-available: "<prefix><yellow>Une nouvelle version de HardRevive est disponible : <green><latest></green> <dark_gray>(actuelle : <gray><current></gray><dark_gray>)"
+update-url: "<prefix><gray>Téléchargement : <aqua><underlined>https://modrinth.com/plugin/hardrevive"
+no-update: "<prefix><green>HardRevive est à jour <dark_gray>(<gray>v<version></gray><dark_gray>)."
+update-check-failed: "<prefix><yellow>Impossible de vérifier les mises à jour."

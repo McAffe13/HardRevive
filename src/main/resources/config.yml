@@ -3,7 +3,8 @@
 # Documentation: https://github.com/hardrevive/HardRevive/wiki
 
 # Language setting
-# Available: en, de
+# Available: en, de, es, fr, zh, ru, pt, pl
+# Place custom language files in the languages/ folder
 language: en
 
 # Death system settings
@@ -25,15 +26,6 @@ update-checker:
   enabled: true
   notify-admins: true
   modrinth-project-id: "hardrevive"
-
-# bStats metrics
-bstats:
-  enabled: true
-
-# Storage settings
-storage:
-  # Currently only YAML is supported
-  type: YAML
 
 # Debug mode (enables verbose logging)
 debug: false

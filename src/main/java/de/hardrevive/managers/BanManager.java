@@ -14,6 +14,7 @@ import io.papermc.paper.ban.BanListType;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.ban.ProfileBanList;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -36,6 +37,15 @@ public final class BanManager {
         PlayerProfile profile = resolveProfile(deadPlayer.getUuid());
         if (profile == null) return;
         profileBanList().addBan(profile, banMessage, (java.util.Date) null, "HardRevive");
+
+        // Kick the active session immediately so the ban takes effect at once
+        Player online = plugin.getServer().getPlayer(deadPlayer.getUuid());
+        if (online != null && online.isOnline()) {
+            String raw = lang.getRaw("ban-message")
+                    .replace("<death_date>", TimeUtils.formatDate(deadPlayer.getDeathTime()))
+                    .replace("<cause>", deadPlayer.getDeathCause());
+            online.kick(MiniMessage.miniMessage().deserialize(raw));
+        }
     }
 
     public void unbanPlayer(@NotNull UUID uuid) {
